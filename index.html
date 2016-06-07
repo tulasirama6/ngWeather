@@ -33,12 +33,19 @@
                 <div class="row">
                   <ol class="breadcrumb">
                         <li>Forecast</li>
-                        <li>{{city}}</li>
+                        <li ng-show="location">{{$root.location.city | uppercase }}, {{$root.location.region | uppercase}}, {{$root.location.country | uppercase}}</li>
                     </ol>
                     <div class="col-md-3" >
                         <ul class="nav">
                             <li ng-repeat = "city in cities"><a href="#/forecast/{{city}}" class="primary-btn">{{city}}</a></li>
                         </ul>
+                        <p>Search for a location of your choice</p>
+                        <form id="form" role="form" class="ng-pristine ng-valid" ng-submit="reload()">
+                            <div class="form-group move-down">
+                                <input type="text" id="city" class="form-control ng-isolate-scope" placeholder="Enter a location" ng-model="city" />
+                                <a style="margin-top:20px" href="#/forecast/{{city}}" class="btn-primary btn">Get Weather</a>
+                            </div>
+                        </form>
                     </div>
                     <div class="col-md-7">
                         <div ng-view></div>

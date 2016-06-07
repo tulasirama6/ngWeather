@@ -5,8 +5,8 @@ myApp.config(['$routeProvider', function($routeProvider) {
       when('/forecast/:city', {
         templateUrl: 'forecast/forecast.html',
         controller: 'forecastController'
-      }).
-     otherwise({redirectTo: 'forecast/Hyderabad'});
+      })//.
+     //otherwise({redirectTo: 'forecast/Hyderabad'});
     //$scope.city = $routeProvider.city;
    // $routeProvider.when('/').redirectTo;
   }]);
@@ -34,9 +34,12 @@ myApp.service('weatherService', function($http) {
     
 });
 
-myApp.controller('mainController', ['$scope','$routeParams','$filter','weatherService','$rootScope', function($scope, $routeParams, $filter, weatherService, $rootScope) {
-    $scope.cities = ['Hyderabad','Bengaluru','Chennai','Vijayawada'];
+myApp.controller('mainController', ['$scope','$routeParams','$filter','weatherService','$rootScope', '$location', function($scope, $routeParams, $filter, weatherService, $rootScope, $location) {
+    $scope.cities = ['Hyderabad','Bengaluru','Chennai','Delhi'];
     $scope.createdDate = moment(new Date()).format('LLL');
+       $scope.reload = function(){
+            $location.path('forecast/'+$scope.city);
+        }
 }]);
 
 myApp.controller('forecastController', ['$scope','$routeParams','weatherService', '$rootScope', function($scope, $routeParams, weatherService, $rootScope) {
@@ -46,8 +49,10 @@ myApp.controller('forecastController', ['$scope','$routeParams','weatherService'
         $rootScope.city = city;
         weatherService.getWeather(city, function(result){
             $scope.forecast = result.query&&result.query.results&&result.query.results.channel.item.forecast;
+            $rootScope.location = result.query&&result.query.results&&result.query.results.channel.location;
             $scope.loading=!$scope.forecast;
             $scope.loading=false;
         });
     }]);
-    
+ 
+
