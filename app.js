@@ -5,8 +5,8 @@ myApp.config(['$routeProvider', function($routeProvider) {
       when('/forecast/:city', {
         templateUrl: 'forecast/forecast.html',
         controller: 'forecastController'
-      })//.
-     //otherwise({redirectTo: 'forecast/Hyderabad'});
+      }).
+     otherwise({redirectTo: 'forecast/Hyderabad'});
     //$scope.city = $routeProvider.city;
    // $routeProvider.when('/').redirectTo;
   }]);
