@@ -1,0 +1,50 @@
+<html ng-app="myApp">
+    <head>
+    </head>
+    <body>
+
+    <!-- Angular Material Dependencies -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-aria.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-route.min.js"></script>
+    <script src="app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
+        <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="custom.css" />
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+        <div ng-controller='mainController'>
+            <nav class="navbar navbar-default">
+              <div class="container-fluid">
+                 <div class="navbar-header">
+                  <div class="navbar-brand" >WEATHER APP</div>
+                </div>
+                <ul class="nav navbar-nav navbar-right">
+                  <li><a>{{createdDate}}</a></li>
+                </ul>
+              </div>
+            </nav>
+            <div class="container">
+                <div class="row">
+                  <ol class="breadcrumb">
+                        <li>Forecast</li>
+                        <li>{{city}}</li>
+                    </ol>
+                    <div class="col-md-3" >
+                        <ul class="nav">
+                            <li ng-repeat = "city in cities"><a href="#/forecast/{{city}}" class="primary-btn">{{city}}</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-7">
+                        <div ng-view></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

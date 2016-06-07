@@ -1,0 +1,19 @@
+<div>
+    <div ng-show = "loading" ><img class="center-block" ="120" width="160" src="./spinner.gif" /></div>
+    <div class = "primary-btn warning" ng-hide="forecast">No Results found for {{city}}</div>
+        <table class = "table vertical-center table-striped" >
+            <tr ng-show = "!loading&&forecast">
+                <th>DATE</th>
+                <th>DAY</th>
+                <th>TEMPERATURE</th>
+                <th>CONDITIONS</th>
+            </tr>
+            <tr ng-repeat = "result in forecast">
+                <td>{{result.date}}</td>
+                <td style="text-transform:uppercase">{{result.day}}</td>
+                <td ng-init="result.high = (result.high-32)*5/9;result.low = (result.low-32)*5/9">High : {{result.high | number:0}}&deg;C<br/>Low : {{result.low | number:0}}&deg;C</td>
+                <td>{{result.text}}</td>
+    
+            </tr>
+        </table>
+</div>

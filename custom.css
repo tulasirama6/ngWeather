@@ -1,0 +1,13 @@
+.table.table-striped.vertical-center>tbody>tr>td {
+    vertical-align: middle;
+}
+.vertical-top {
+    display: inline-block;
+    vertical-align: top !important;
+    float: none;
+}
+.vertical-bottom {
+    display: inline-block;
+    vertical-align: bottom  !important;
+    float: none;
+}
